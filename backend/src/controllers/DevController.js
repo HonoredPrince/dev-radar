@@ -43,3 +43,16 @@ module.exports = {
         return response.json(dev);
     }
 };    
+
+// router.delete('/:id', controller.delete)
+
+// async function delete(req, res) {
+//     try {
+//       const { descontrucao } = req.body
+//       await db.TABELA.update({ active: false }, { where: { id: resourceId } })
+
+//       return res.status(204).send()
+//     } catch (error) {
+//       return res.status(500).json({ status: 'Internal Server Error', error: true, message: 'Resource could not be deleted' })
+//     }
+//   }
