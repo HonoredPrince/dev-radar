@@ -65,3 +65,7 @@ aside form button[type=submit] {
 aside form button[type=submit]:hover { 
     background: #6931ca;
 }
+
+aside.delete-aside {
+    margin-left: 30px;
+}

@@ -13,7 +13,6 @@ module.exports = {
 
     async store(request, response){
         const { github_username, techs, latitude, longitude } = request.body;
-
         let dev = await Dev.findOne({ github_username });
 
         if(!dev){
@@ -38,10 +37,21 @@ module.exports = {
             });
         }
         
-        
-
         return response.json(dev);
+    },
+
+    async delete(request, response) {
+        try {
+            let github_username_delete = request.params.id;
+            console.log(github_username_delete)
+            await Dev.deleteOne({ github_username: github_username_delete});
+            return response.status(204).send();
+
+        } catch (error) {
+            return response.status(500).json({ status: 'Internal Server Error', error: true, message: 'Resource could not be deleted' });
+        }
     }
+
 };    
 
 // router.delete('/:id', controller.delete)

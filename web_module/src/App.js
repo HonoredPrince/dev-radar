@@ -8,6 +8,7 @@ import './Main.css';
 
 import DevItem from './components/DevItem/index'
 import DevForm from './components/DevForm/index'
+import DevDelete from './components/DevDelete/index'
 
 // Componente: Bloco isolado de HTML, CSS, JS, o qual não interfere no restante da aplicação
 // Propriedade: Informações que um componente PAI passa para o componente FILHO
@@ -35,6 +36,13 @@ function App() {
     setDevs([...devs, response.data]);
   }
 
+  async function handleDeleteDev(data){
+    console.log(data.github_username);
+    const response = await api.delete(`/devs/${data.github_username}`);
+
+    //Dynamically show the devs being deleted
+  }
+
   return (
     <div id="app">
       <aside>
@@ -48,6 +56,10 @@ function App() {
           ))}   
         </ul>
       </main>
+      <aside className= "delete-aside">
+        <strong>Deletar</strong>
+        <DevDelete onSubmit={handleDeleteDev}/>
+      </aside>
     </div>
   );
 }
